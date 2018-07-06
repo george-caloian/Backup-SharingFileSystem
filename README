@@ -1,0 +1,41 @@
+Caloian George-Alexandru
+Grupa : 322 Seria : CC
+
+Tema 2 - Protocoale de Comunicatie - Sistem de Backup si Partajare a Fisierelor
+
+Pentru aceasta tema am reusit sa implementez doar 3 comenzi si anume :
+	- Login
+	- Logout
+	- Quit
+
+Tin sa mentionez faptul ca am lucrat pe scheletul laboratorului cu numarul 8
+- TCP . Multiplexare I/O
+
+Crearea fisierului de log este primul pas pe care l-am abordat in rezolvare
+	Am facut o functie auxiliara ce imi intoarce pidul folosind functia
+	sugerata in enuntul temei get_pid rezultat ce il adaug evident la cuvantul
+	client- si atasez si terminatia .log pentru a respecta formatul cerut in
+	enunt
+
+Login - Primul lucru pe care il verificam atunci cand un utilizator doreste
+		sa se logheze este sa vedem daca nu cumva este deja logat
+		In acest caz vom intoarce un mesaj de eroare corespunzator
+		In caz contrar trecem la al 2lea pas
+	  - Trebuie sa verificam daca utilizatorul si parola introduse se regasesc
+	  	in fisierul ce contine datele de logare a tuturor utilizatorilor
+	  	parcurgand acest fisier.
+	  	In cazul in care datele sunt introduse gresit vom intoarce un mesaj de
+	  	eroare care sa instiinteze utilizatorul si foarte important vom avea
+	  	grija sa incrementam numarul de greseli facute pentru ca la atingerea
+	  	a 3 astfel de incercari serverul sa recunoasca faptul ca este supus 
+	  	unei situatii brute-force.
+	  	In cazul in care datele sunt corecte utilizatorul se va loga anvad grija
+	  	sa constrium promptul aferent acestui utilizator
+
+Logout - Primul pas pe care il avem in vedere aici este sa vedem daca exista un
+		 utilizator logat in momentul de fata.
+		 In cazul in care nu exista avem grija sa intoarcem un mesaj de eroare
+		 care sa explice acest fapt.
+
+Quit - Nu sunt multe de spus despre aceasta comanda pur si simplu avem grija sa
+	   salvam aceasta comanda in fisierul de log oprind conexiunea
